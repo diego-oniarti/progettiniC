@@ -1,0 +1,17 @@
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int main(){
+  srand(time(NULL));
+
+  for (int i=1; i<10; i++){
+    cout << rand() << endl;
+  }
+
+  int a = 0b0110;
+  cout << a << endl;
+  
+  return 0;
+}
