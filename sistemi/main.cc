@@ -42,8 +42,8 @@ int main(){
   //trasforma in una matrice a scaletta
   for (int i=0; i<matrice.nRighe-1; i++){
     for (int j=i+1; j<matrice.nRighe; j++){
-      float div = (**(matrice.celle+i));
-      E(&matrice, j,i,-( (**(matrice.celle+j)) / ((div!=0)?div:1) ));
+      float div = *((*(matrice.celle+i))+i);
+      E(&matrice, j,i,-( (*((*(matrice.celle+j))+i)) / ((div!=0)?div:1) ));
     }
     ordina(&matrice);
   }
