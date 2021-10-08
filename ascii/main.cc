@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char **argv) {
   //Se non è specificato il nome file, esci
   if (argc<2){
-    cout << "Missing filename"<endl;
+    cout << "Missing filename"<<endl;
     return -1;
   }
   char* fileName = argv[1];
