@@ -2,6 +2,16 @@
 #include <iomanip>
 using namespace std;
 
+
+//Calcola i valori che soddisfano un sistema di n equazioni lineari in m variabili
+//delle variabili devono essere indicati solo i coefficienti
+//Es.
+//equazioni: 5x + 3y -9z = 4
+//           5x -4z = 13
+//input:     5 3 -9 4
+//           5 0 -4 13
+
+
 typedef struct MATRICE{
   float **celle;
   int nRighe;
