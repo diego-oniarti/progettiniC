@@ -23,16 +23,16 @@ bool risolviMatrice(Matrice *matrice);
 int main(){
   float x1,y1,z1, x2,y2,z2, x3,y3,z3, x4,y4,z4, d1,d2,d3,d4;
 
-  cout <<"x1,y1,d1: ";
+  cout <<"x1,y1,z1,d1: ";
   cin >> x1>>y1>>z1>>d1;
   
-  cout <<"x2,y2,d2: ";
+  cout <<"x2,y2,z2,d2: ";
   cin >> x2>>y2>>z2>>d2;
   
-  cout <<"x3,y3,d3: ";
+  cout <<"x3,y3,z3,d3: ";
   cin >> x3>>y3>>z3>>d3;
   
-  cout <<"x4,y4,d4: ";
+  cout <<"x4,y4,z4,d4: ";
   cin >> x4>>y4>>z4>>d4;
 
   
