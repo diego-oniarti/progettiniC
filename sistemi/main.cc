@@ -55,6 +55,11 @@ int main(){
   if (risolta){
     cout << "risolta: "<<endl;
     stampaMatrice(matrice);
+    cout << "Soluzioni:"<<endl;
+    for (int i=0; i<matrice.nRighe; i++){
+      cout << (*((*(matrice.celle+i))+matrice.nColonne-1)) << " ";
+    }
+    cout << endl;
   }else{
     cout << "inrisolvibile"<<endl;
   }
