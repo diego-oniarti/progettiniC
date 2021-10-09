@@ -21,30 +21,61 @@ void eliminaRiga(Matrice *matrice, int riga);
 bool risolviMatrice(Matrice *matrice);
 
 int main(){
-  int nEquazioni, nVariabili;
-  cout << "Numero equazioni: ";
-  cin >> nEquazioni;
-  
-  cout << "Numero variabili: ";
-  cin >> nVariabili;
+  float x1,y1, x2,y2, x3,y3, d1,d2,d3;
 
+  cout <<"x1,y1,d1: ";
+  cin >> x1>>y1>>d1;
+  
+  cout <<"x2,y2,d2: ";
+  cin >> x2>>y2>>d2;
+  
+  cout <<"x3,y3,d3: ";
+  cin >> x3>>y3>>d3;
+
+  
   Matrice matrice;
-  creaMatrice(&matrice, nEquazioni, nVariabili+1); //+1 perché ci sono anche le costanti
+  creaMatrice(&matrice, 3, 5); //+1 perché ci sono anche le costanti
 
   //prende in input le equazioni
-  for (int i=0; i<nEquazioni; i++){
-    cout << "Inserire coeficienti e termine noto eq."<<(i+1)<<":"<<endl;
-    for (int j=0; j<nVariabili+1; j++){
-      cout << "> ";
-      cin >> *(*(matrice.celle+i)+j);
+  for (int i=0; i<matrice.nRighe; i++){
+    for (int j=0; j<2; j++){
+      *((*(matrice.celle+i))+j) = 1;
     }
   }
+  matrice.celle[0][2]=-2*x1;
+  matrice.celle[0][3]=-2*y1;
+  matrice.celle[0][4]=(d1*d1)-(x1*x1)-(y1*y1);
 
+  matrice.celle[1][2]=-2*x2;
+  matrice.celle[1][3]=-2*y2;
+  matrice.celle[1][4]=(d2*d2)-(x2*x2)-(y2*y2);
+  
+  matrice.celle[2][2]=-2*x3;
+  matrice.celle[2][3]=-2*y3;
+  matrice.celle[2][4]=(d3*d3)-(x3*x3)-(y3*y3);
+  
   bool risolta = risolviMatrice(&matrice);
 
   if (risolta){
     cout << "risolta: "<<endl;
     stampaMatrice(matrice);
+    
+    Matrice m2;
+    creaMatrice(&m2, 2,3);
+    m2.celle[0][0] = matrice.celle[1][2];
+    m2.celle[0][1] = matrice.celle[1][3];
+    m2.celle[0][2] = matrice.celle[1][4];
+    m2.celle[1][0] = matrice.celle[2][2];
+    m2.celle[1][1] = matrice.celle[2][3];
+    m2.celle[1][2] = matrice.celle[2][4];
+    risolta = risolviMatrice(&m2);
+    if (risolta){
+      cout << "Soluzione:"<<endl;
+      stampaMatrice(m2);
+    }else{
+      cout << "Inrisolubile"<<endl;
+    }
+    
   }else{
     cout << "inrisolvibile"<<endl;
   }

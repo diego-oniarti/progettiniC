@@ -18,7 +18,6 @@ int getPivot(Matrice matrice, int riga);
 void ordina(Matrice *matrice);
 bool isImpossible(Matrice mat);
 void eliminaRiga(Matrice *matrice, int riga);
-bool risolviMatrice(Matrice *matrice);
 
 int main(){
   int nEquazioni, nVariabili;
@@ -40,21 +39,9 @@ int main(){
     }
   }
 
-  bool risolta = risolviMatrice(&matrice);
+  cout << "Matrice originale:"<<endl;
+  stampaMatrice(matrice);
 
-  if (risolta){
-    cout << "risolta: "<<endl;
-    stampaMatrice(matrice);
-  }else{
-    cout << "inrisolvibile"<<endl;
-  }
-  return 0;
-}
-
-
-bool risolviMatrice(Matrice *m){
-  Matrice &matrice = *m;
-  bool ret = true;
   //trasforma in una matrice a scaletta
   for (int i=0; i<matrice.nRighe-1; i++){
     for (int j=i+1; j<matrice.nRighe; j++){
@@ -64,12 +51,11 @@ bool risolviMatrice(Matrice *m){
     ordina(&matrice);
   }
 
-  //cout << "Matrice a scaletta:"<<endl;
-  //stampaMatrice(matrice);
+  cout << "Matrice a scaletta:"<<endl;
+  stampaMatrice(matrice);
 
   if (isImpossible(matrice)){
-    //cout << "Impossibile!" << endl;
-    ret = false;
+    cout << "Impossibile!" << endl;
   }else{
 
     for (int i=matrice.nRighe-1; i>=0; --i){
@@ -83,8 +69,8 @@ bool risolviMatrice(Matrice *m){
       D(&matrice, i, 1/(*((*(matrice.celle+i))+getPivot(matrice,i))));
     }
 
-    //cout << "Matrice con uni:"<<endl;
-    //stampaMatrice(matrice);
+    cout << "Matrice con uni:"<<endl;
+    stampaMatrice(matrice);
 
     //finisco di ridurre
     for (int i=matrice.nRighe-1; i>=1; --i){
@@ -94,14 +80,14 @@ bool risolviMatrice(Matrice *m){
       }
     }
 
-    //cout << "Matrice ridotta:"<<endl;
+    cout << "Matrice ridotta:"<<endl;
     //questo ciclo potrebbe essere utile
     for (int i=0; i<matrice.nRighe; ++i){
       D(&matrice, i, 1/(*((*(matrice.celle+i))+getPivot(matrice,i))));
     }
-    //stampaMatrice(matrice);
+    stampaMatrice(matrice);
   }
-  return ret;
+  return 0;
 }
 
 bool isEmptyLine(Matrice mat, int riga){
