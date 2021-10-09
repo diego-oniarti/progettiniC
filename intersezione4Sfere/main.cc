@@ -73,18 +73,14 @@ int main(){
     
     Matrice m2;
     creaMatrice(&m2, 3,4);
-    m2.celle[0][0] = matrice.celle[1][3];
-    m2.celle[0][1] = matrice.celle[1][4];
-    m2.celle[0][2] = matrice.celle[1][5];
-    m2.celle[0][3] = matrice.celle[1][6];
-    m2.celle[1][0] = matrice.celle[2][3];
-    m2.celle[1][1] = matrice.celle[2][4];
-    m2.celle[1][2] = matrice.celle[2][5];
-    m2.celle[1][3] = matrice.celle[2][6];
-    m2.celle[2][0] = matrice.celle[3][3];
-    m2.celle[2][1] = matrice.celle[3][4];
-    m2.celle[2][2] = matrice.celle[3][5];
-    m2.celle[2][3] = matrice.celle[3][6];
+    //mette nella matrice m2 il contenuto dell'angolo in basso a destra della matrice appena "risolta"
+    for (int i=0,j=1; i<m2.nRighe && j<matrice.nRighe; ++i,++j){
+      for (int k=0,n=3; k<m2.nColonne && n<matrice.nColonne; ++n,++k){
+	//m2.celle[i][k] = matrice.celle[j][n];
+	*((*(m2.celle+i))+k) = *((*(matrice.celle+j))+n);
+      }
+    }
+
     risolta = risolviMatrice(&m2);
     if (risolta){
       cout << "Soluzione:"<<endl;
