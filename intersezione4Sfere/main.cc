@@ -210,6 +210,7 @@ void E(Matrice *m, int riga1, int riga2, float bias){
   for (int i=0; i<mat.nColonne; i++){
     *(*(mat.celle+riga1)+i) += (*(*(mat.celle+riga2)+i))*bias; //mat[riga1][i] += mat[riga2][i]*bias
   }
+  return;
 }
 
 void S(Matrice *m, int riga1, int riga2){
@@ -218,6 +219,7 @@ void S(Matrice *m, int riga1, int riga2){
   float* holder = *(mat.celle+riga1);
   *(mat.celle+riga1) = *(mat.celle+riga2);
   *(mat.celle+riga2) = holder;
+  return;
 }
 
 void D(Matrice *m, int riga, float bias){
@@ -225,6 +227,7 @@ void D(Matrice *m, int riga, float bias){
   for (int i=0; i<mat.nColonne; i++){
     *((*(mat.celle+riga))+i) *= bias;
   }
+  return;
 }
 
 void creaMatrice(Matrice *m, int nRighe, int nColonne){

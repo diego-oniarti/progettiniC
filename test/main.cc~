@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+  int a;
+  cout << "In a: ";
+  cin >> a;
+  cout << a << endl;
+
+  char parola[] = "ciao";
+  cout << "Parola: "<<parola<<endl;
+  
+  return 0;
+}

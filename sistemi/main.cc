@@ -29,6 +29,7 @@ void ordina(Matrice *matrice);
 bool isImpossible(Matrice mat);
 void eliminaRiga(Matrice *matrice, int riga);
 bool risolviMatrice(Matrice *matrice);
+void distruggiMatrice(Matrice *mat);
 
 int main(){
   int nEquazioni, nVariabili;
@@ -63,6 +64,7 @@ int main(){
   }else{
     cout << "inrisolvibile"<<endl;
   }
+  distruggiMatrice(&matrice);
   return 0;
 }
 
@@ -206,5 +208,14 @@ void creaMatrice(Matrice *m, int nRighe, int nColonne){
   for (int i=0; i<nRighe; i++){
     *(mat.celle+i) = (float*)malloc(sizeof(float)*nColonne);
   }
+  return;
+}
+
+void distruggiMatrice(Matrice *m){
+  Matrice &mat=*m;
+  for (int i=0; i<mat.nRighe; ++i){
+    free(*(mat.celle+i));
+  }
+  free(mat.celle);
   return;
 }
